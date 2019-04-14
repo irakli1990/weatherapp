@@ -62,24 +62,18 @@ public class WeatherInfoService {
     }
 
 
-//    public List getWeatherForecastForCity(String city) {
-//        List listOfWeather = getWeatherForecastForCity(city);
-//        return listOfWeather;
-//    }
-
     // METHOD READING READING STREAM FROM URL
     public Reader parsUrltoJsonObject(String url) {
-        InputStream is;
+        InputStream inputStream;
         Reader reader = null;
         try {
-            is = new URL(url).openStream();
-            reader = new InputStreamReader(is, StandardCharsets.UTF_8);
+            inputStream = new URL(url).openStream();
+            reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return reader;
     }
 
