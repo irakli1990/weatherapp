@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
-
 import { LoginModalService, AccountService, Account } from 'app/core';
+import { JhiAlertService } from 'ng-jhipster';
+import { HomeService } from 'app/home/home.service';
 
 @Component({
     selector: 'jhi-home',
@@ -15,31 +16,54 @@ export class HomeComponent implements OnInit {
     lineData: any;
     barData: any;
     donatData: any;
+    links: any;
+    parseLinks: any;
+    totalItems: any;
+    weatherMain: any;
+    weatherForCity: string;
+    temp: any;
+    tempMax: any;
+    humidity: any;
+    pressure: any;
+    tempMin: any;
+    curentDate: Date;
+    randomtemp: any;
+    randomtempMax: any;
+    randomtempMin: any;
+    randomCity: string;
 
     constructor(
         private accountService: AccountService,
         private loginModalService: LoginModalService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private alertService: JhiAlertService,
+        private homeService: HomeService
     ) {
         this.barData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: [this.getDate()],
             datasets: [
                 {
-                    label: 'My First dataset',
+                    label: 'temperatura',
                     backgroundColor: '#42A5F5',
                     borderColor: '#1E88E5',
-                    data: [65, 59, 80, 81, 56, 55, 40]
+                    data: this.temp
                 },
                 {
-                    label: 'My Second dataset',
+                    label: 'Minimalna temperatura',
                     backgroundColor: '#9CCC65',
                     borderColor: '#7CB342',
-                    data: [28, 48, 40, 19, 86, 27, 90]
+                    data: this.tempMin
+                },
+                {
+                    label: 'Maximalna temperatura',
+                    backgroundColor: '#9eee65',
+                    borderColor: '#7CB342',
+                    data: this.tempMax
                 }
             ]
         };
         this.lineData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: [this.curentDate],
             datasets: [
                 {
                     label: 'First Dataset',
@@ -56,15 +80,18 @@ export class HomeComponent implements OnInit {
             ]
         };
         this.donatData = {
-            labels: ['A', 'B', 'C'],
+            labels: ['Temperatura', 'Temperatura Minimalna', 'Temperatura maximalna'],
             datasets: [
                 {
-                    data: [300, 50, 100],
+                    data: [this.temp, this.tempMin, this.tempMax],
                     backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
                     hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
                 }
             ]
         };
+        setInterval(() => {
+            this.randomCityGenerator();
+        }, 5000);
     }
 
     ngOnInit() {
@@ -88,5 +115,70 @@ export class HomeComponent implements OnInit {
 
     login() {
         this.modalRef = this.loginModalService.open();
+    }
+
+    private onSuccess(data, headers) {
+        this.links = this.parseLinks.parse(headers.get('link'));
+        this.totalItems = headers.get('X-Total-Count');
+        this.weatherMain = data;
+    }
+
+    private onError(error) {
+        this.alertService.error(error.error, error.message, null);
+    }
+
+    findCityWeather(city: string) {
+        this.homeService.find(city).subscribe(
+            res => {
+                this.temp = res.body.temp;
+                this.tempMax = res.body.tempMax;
+                this.tempMin = res.body.tempMin;
+
+                console.log(this.tempMin, this.tempMax, this.temp);
+            },
+            error => (this.weatherMain = <any>error)
+        );
+    }
+
+    findRandomCityWeather(city: string) {
+        this.homeService.find(city).subscribe(
+            res => {
+                this.randomtemp = res.body.temp;
+                this.randomtempMax = res.body.tempMax;
+                this.randomtempMin = res.body.tempMin;
+
+                console.log(this.tempMin, this.tempMax, this.temp);
+            },
+            error => (this.weatherMain = <any>error)
+        );
+    }
+
+    randomCityGenerator() {
+        const cityArray = [
+            'Katowice',
+            'Tbilisi',
+            'Paris',
+            'Moskow',
+            'Washington',
+            'Tokyo',
+            'Praga',
+            'Budapesht',
+            'Zagreb',
+            'Kutaisi',
+            'Kiev',
+            'Bratislava'
+        ];
+
+        for (let i = 0; i < cityArray.length; i++) {
+            const randomIndex = Math.floor(Math.random() * cityArray.length);
+            this.randomCity = cityArray[randomIndex];
+        }
+        this.findRandomCityWeather(this.randomCity);
+    }
+
+    getDate() {
+        const d = new Date();
+        d.setDate(d.getDate());
+        return d.toLocaleDateString();
     }
 }

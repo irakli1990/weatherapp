@@ -2,18 +2,20 @@
 
     <div class="row">
         <div class="col-lg-12" id="forecast-header">
+             <h4 style="text-align: center; color: white;padding: 10px; text-decoration-style: solid">Miasto:{{randomCity}}</h4>
+            <h5 style="color: white;padding: 5px;text-align: center">temp C: {{randomtemp}}    temp max C: {{randomtempMax}}       temp min C: {{randomtempMax}}</h5>
 
         </div>
+
     </div>
     <br>
     <br>
     <div class="row">
         <div class="col-lg-12">
-
-            <input type="text" pInputText placeholder="search for city"/>
-
-            <button pButton type="button" icon="pi pi-search" label="Search" iconPos="right"></button>
-
+            <form  (ngSubmit)="findCityWeather(weatherForCity)">
+                <input type="text" [(ngModel)]="weatherForCity" name="weatherForCity" pInputText placeholder="search for city"/>
+                <button pButton type="submit" icon="pi pi-search" label="Search" iconPos="right"></button>
+            </form>
         </div>
     </div>
 

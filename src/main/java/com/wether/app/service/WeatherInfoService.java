@@ -15,12 +15,13 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Component
 public class WeatherInfoService {
 
+
+    // GSON
     @Autowired
     public static Gson create() {
         return new GsonBuilder().setPrettyPrinting().create();
@@ -29,7 +30,7 @@ public class WeatherInfoService {
 
     // URL AND APLICATION KEY
     private static final String STATIC_WEATHER_URL =
-        "http://api.openweathermap.org/data/2.5/weather?q=%s&appid=e7b429593963ceb11a198af8d22c9a55";
+        "http://api.openweathermap.org/data/2.5/weather?q=%s&appid=e7b429593963ceb11a198af8d22c9a55&units=metric";
 
 
 
@@ -45,7 +46,6 @@ public class WeatherInfoService {
     // METHOD FINDING MAIN FROM OPENWEATHER MAP
     public Main getMain(String city){
         Main main = getWeather(city).getMain();
-
         return main;
     }
 
