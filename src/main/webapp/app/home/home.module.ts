@@ -5,10 +5,9 @@ import { RouterModule } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
 import { WetherappSharedModule } from 'app/shared';
 import { HOME_ROUTE, HomeComponent } from './';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
-    imports: [WetherappSharedModule, InputTextModule, FormsModule, ChartModule, ButtonModule, RouterModule.forChild([HOME_ROUTE])],
+    imports: [WetherappSharedModule, InputTextModule, ChartModule, ButtonModule, RouterModule.forChild([HOME_ROUTE])],
     declarations: [HomeComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

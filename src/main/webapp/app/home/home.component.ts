@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
                 {
                     label: 'Maximalna temperatura',
                     backgroundColor: '#9eee65',
-                    borderColor: '#7CB342',
+                    borderColor: '#24CB32',
                     data: this.tempMax
                 }
             ]
@@ -133,7 +133,6 @@ export class HomeComponent implements OnInit {
                 this.temp = res.body.temp;
                 this.tempMax = res.body.tempMax;
                 this.tempMin = res.body.tempMin;
-
                 console.log(this.tempMin, this.tempMax, this.temp);
             },
             error => (this.weatherMain = <any>error)
@@ -146,7 +145,6 @@ export class HomeComponent implements OnInit {
                 this.randomtemp = res.body.temp;
                 this.randomtempMax = res.body.tempMax;
                 this.randomtempMin = res.body.tempMin;
-
                 console.log(this.tempMin, this.tempMax, this.temp);
             },
             error => (this.weatherMain = <any>error)
@@ -158,11 +156,11 @@ export class HomeComponent implements OnInit {
             'Katowice',
             'Tbilisi',
             'Paris',
-            'Moskow',
+            'Moscow',
             'Washington',
             'Tokyo',
             'Praga',
-            'Budapesht',
+            'Budapest',
             'Zagreb',
             'Kutaisi',
             'Kiev',
