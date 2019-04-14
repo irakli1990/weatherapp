@@ -3,7 +3,8 @@ import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 import { LoginModalService, AccountService, Account } from 'app/core';
 import { JhiAlertService } from 'ng-jhipster';
-import { HomeService } from 'app/home/home.service';
+import { HomeService } from 'app/home/weather-main.service';
+import { HomeForecastService } from 'app/home/weather-forecast.service';
 
 @Component({
     selector: 'jhi-home',
@@ -31,13 +32,15 @@ export class HomeComponent implements OnInit {
     randomtempMax: any;
     randomtempMin: any;
     randomCity: string;
+    forecastDate: Date;
 
     constructor(
         private accountService: AccountService,
         private loginModalService: LoginModalService,
         private eventManager: JhiEventManager,
         private alertService: JhiAlertService,
-        private homeService: HomeService
+        private homeService: HomeService,
+        private homeForecastService: HomeForecastService
     ) {
         this.barData = {
             labels: [this.getDate()],
@@ -145,7 +148,20 @@ export class HomeComponent implements OnInit {
                 this.randomtemp = res.body.temp;
                 this.randomtempMax = res.body.tempMax;
                 this.randomtempMin = res.body.tempMin;
-                console.log(this.tempMin, this.tempMax, this.temp);
+                console.log(this.randomtemp, this.randomtempMax, this.randomtempMin);
+            },
+            error => (this.weatherMain = <any>error)
+        );
+    }
+
+    findCityWeatherForecast(city: string) {
+        this.homeForecastService.findForecast(city).subscribe(
+            res => {
+                this.temp = res.body.main.temp;
+                this.tempMax = res.body.main.tempMax;
+                this.tempMin = res.body.main.tempMin;
+                this.forecastDate = res.body.dt;
+                console.log(this.tempMin, this.tempMax, this.temp, this.forecastDate);
             },
             error => (this.weatherMain = <any>error)
         );

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IWeatherMain } from 'app/shared/models/WeatherMain.model';
+import { IWeatherMain } from 'app/shared/models/weather-main.model';
 import { SERVER_API_URL } from 'app/app.constants';
 
 type EntityResponseType = HttpResponse<IWeatherMain>;

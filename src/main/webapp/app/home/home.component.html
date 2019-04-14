@@ -12,7 +12,7 @@
     <br>
     <div class="row">
         <div class="col-lg-12">
-            <form  (ngSubmit)="findCityWeather(weatherForCity)">
+            <form  (ngSubmit)="findCityWeatherForecast(weatherForCity)">
                 <input type="text" [(ngModel)]="weatherForCity" name="weatherForCity" pInputText placeholder="search for city"/>
                 <button pButton type="submit" icon="pi pi-search" label="Search" iconPos="right"></button>
             </form>
