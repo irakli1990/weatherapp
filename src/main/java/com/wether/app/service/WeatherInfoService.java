@@ -32,8 +32,8 @@ public class WeatherInfoService {
     private static final String STATIC_WEATHER_URL =
         "http://api.openweathermap.org/data/2.5/weather?q=%s&appid=e7b429593963ceb11a198af8d22c9a55&units=metric";
 
-    private static final String STATIC_WEATHER_FORECAST_URL =
-        "http://api.openweathermap.org/data/2.5/forecast?q=%s&appid=e7b429593963ceb11a198af8d22c9a55&units=metric";
+    private static final String STATIC_WEATHER_FORECAST_URL ="https://samples.openweathermap.org/data/2.5/forecast?q=M%C3%BCnchen,DE&appid=b6907d289e10d714a6e88b30761fae22";
+//        "http://api.openweathermap.org/data/2.5/forecast?q=%s&appid=e7b429593963ceb11a198af8d22c9a55&units=metric";
 
 
     // METHOD FINDING ALL INFORMATION FROM OPENWEATHERMAP
@@ -55,7 +55,7 @@ public class WeatherInfoService {
         return listWeatherInfo.getList();
     }
 
-    // METHOD FINDING MAIN FROM OPENWEATHER MAP
+     //METHOD FINDING MAIN FROM OPENWEATHER MAP
     public Main getMain(String city) {
         Main main = getWeather(city).getMain();
         return main;

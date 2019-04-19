@@ -10,7 +10,7 @@ type EntityResponseType = HttpResponse<IForecast>;
 export class HomeForecastService {
     constructor(private http: HttpClient) {}
 
-    private resourceUrl = SERVER_API_URL + 'api/weather';
+    private resourceUrl = SERVER_API_URL + 'api/weather/forecast';
 
     findForecast(city: string): Observable<EntityResponseType> {
         return this.http.get<IForecast>(`${this.resourceUrl}/${city}`, { observe: 'response' });

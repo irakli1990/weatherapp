@@ -1,69 +1,82 @@
 <div class="container">
 
-    <div class="row">
-        <div class="col-lg-12" id="forecast-header">
-             <h4 style="text-align: center; color: white;padding: 10px; text-decoration-style: solid">Miasto:{{randomCity}}</h4>
-            <h5 style="color: white;padding: 5px;text-align: center">temp C: {{randomtemp}}    temp max C: {{randomtempMax}}       temp min C: {{randomtempMax}}</h5>
-
-        </div>
-
-    </div>
     <br>
     <br>
     <div class="row">
         <div class="col-lg-12">
-            <form  (ngSubmit)="findCityWeatherForecast(weatherForCity)">
-                <input type="text" [(ngModel)]="weatherForCity" name="weatherForCity" pInputText placeholder="search for city"/>
+            <form (ngSubmit)="findCityWeather(weatherForCity)">
+                <input type="text" [(ngModel)]="weatherForCity" name="weatherForCity" pInputText
+                       placeholder="search for city"/>
                 <button pButton type="submit" icon="pi pi-search" label="Search" iconPos="right"></button>
             </form>
         </div>
+
+        <br>
+        <br>
+        <div class="conteiner" id="content" #content>
+            <div class="container-table">
+                <div class="wrap-table">
+                    <div class="table">
+                        <table>
+                            <thead>
+                            <tr class="table100-head">
+                                <th class="column1">Miasto</th>
+                                <th class="column2">Temperatura</th>
+                                <th class="column3">Temp. Maksimalna</th>
+                                <th class="column4">Temp. Minimalna</th>
+                                <th class="column5">Wylgotność</th>
+                                <th class="column6">Cisnienie</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="column5">{{weatherForCity}}</td>
+                                <td class="column1">{{randomtemp}}</td>
+                                <td class="column2">{{randomtempMax}}</td>
+                                <td class="column3">{{randomtempMin}}</td>
+                                <td class="column4">{{humidity}}</td>
+                                <td class="column5">{{presure}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-lg-6">
+
+                <canvas id="barcanvas">{{ data}}</canvas>
+
+            </div>
+            <div class="col-lg-12">
+
+                <canvas id="canvas">{{ chart}}</canvas>
+
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <div clas="row">
+
+            <div class="col-lg-4">
+                <form (ngSubmit)="downloadPDF2()" *ngIf="isAuthenticated()">
+                    <button pButton type="submit" icon="pi pi-save" label="Download chart to pdf"
+                            iconPos="right"></button>
+                </form>
+
+
+            </div>
+        </div>
+
     </div>
-
-
-    <div class="row">
-        <div class="col-lg-6">
-            <p-chart type="bar" [data]="barData"></p-chart>
-        </div>
-        <div class="col-lg-6">
-            <p-chart type="bar" [data]="barData"></p-chart>
-        </div>
-
-    </div>
-    <br>
-    <br>
-
-    <div class="row">
-        <div class="col-lg-6">
-            <p-chart type="line" [data]="lineData" (onDataSelect)="selectData($event)"></p-chart>
-        </div>
-        <div class="col-lg-6">
-            <p-chart type="line" [data]="lineData" (onDataSelect)="selectData($event)"></p-chart>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="row">
-        <div class="col-lg-6">
-            <p-chart type="doughnut" [data]="donatData"></p-chart>
-        </div>
-        <div class="col-lg-6">
-            <p-chart type="doughnut" [data]="donatData"></p-chart>
-        </div>
-
-    </div>
-
-
-    <br>
-    <br>
-
-    <div clas="row">
-        <div class="col-lg-4">
-            <button pButton type="button" icon="pi pi-save" label="Save as image" iconPos="left"></button>
-            <button pButton type="button" icon="pi pi-save" label="Save as pdf" iconPos="left"></button>
-        </div>
-    </div>
-
-</div>
 
 
