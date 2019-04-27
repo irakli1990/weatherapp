@@ -5,10 +5,12 @@ import { IWeatherMain } from 'app/shared/models/weather-main.model';
 import { SERVER_API_URL } from 'app/app.constants';
 
 type EntityResponseType = HttpResponse<IWeatherMain>;
+
 @Injectable({ providedIn: 'root' })
 export class HomeService {
-    constructor(private http: HttpClient) {}
     private resourceUrl = SERVER_API_URL + 'api/weather';
+
+    constructor(private http: HttpClient) {}
 
     find(city: string): Observable<EntityResponseType> {
         return this.http.get<IWeatherMain>(`${this.resourceUrl}/${city}`, { observe: 'response' });

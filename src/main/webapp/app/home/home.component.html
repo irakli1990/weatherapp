@@ -13,70 +13,87 @@
 
         <br>
         <br>
-        <div class="conteiner" id="content" #content>
-            <div class="container-table">
-                <div class="wrap-table">
-                    <div class="table">
-                        <table>
-                            <thead>
-                            <tr class="table100-head">
-                                <th class="column1">Miasto</th>
-                                <th class="column2">Temperatura</th>
-                                <th class="column3">Temp. Maksimalna</th>
-                                <th class="column4">Temp. Minimalna</th>
-                                <th class="column5">Wylgotność</th>
-                                <th class="column6">Cisnienie</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="column5">{{weatherForCity}}</td>
-                                <td class="column1">{{randomtemp}}</td>
-                                <td class="column2">{{randomtempMax}}</td>
-                                <td class="column3">{{randomtempMin}}</td>
-                                <td class="column4">{{humidity}}</td>
-                                <td class="column5">{{presure}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
+        <div class="row" id="dataforpdf">
+
+            <div class="col-lg-12">
+
+
+                <div class="conteiner" id="content" #content>
+                    <div class="container-table">
+                        <div class="wrap-table">
+                            <div class="table">
+                                <table width="100%">
+                                    <thead>
+                                    <tr class="table100-head">
+                                        <th class="column1">Miasto</th>
+                                        <th class="column2">Temperatura</th>
+                                        <th class="column3">Temp. Maksimalna</th>
+                                        <th class="column4">Temp. Minimalna</th>
+                                        <th class="column5">Wylgotność</th>
+                                        <th class="column6">Cisnienie</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="column5">{{weatherForCity}}</td>
+                                        <td class="column1">{{randomtemp}}</td>
+                                        <td class="column2">{{randomtempMax}}</td>
+                                        <td class="column3">{{randomtempMin}}</td>
+                                        <td class="column4">{{humidity}}</td>
+                                        <td class="column5">{{presure}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-        </div>
-        <br>
-        <br>
-
-        <div class="row">
-            <div class="col-lg-6">
-
-                <canvas id="barcanvas">{{ data}}</canvas>
-
-            </div>
             <div class="col-lg-12">
-
-                <canvas id="canvas">{{ chart}}</canvas>
-
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-
-
-        <div clas="row">
-
-            <div class="col-lg-4">
-                <form (ngSubmit)="downloadPDF2()" *ngIf="isAuthenticated()">
-                    <button pButton type="submit" icon="pi pi-save" label="Download chart to pdf"
-                            iconPos="right"></button>
-                </form>
-
+                <canvas baseChart
+                        [datasets]="barChartData"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [plugins]="barChartPlugins"
+                        [legend]="barChartLegend"
+                        [chartType]="barChartType">
+                </canvas>
 
             </div>
         </div>
+        <br>
+        <br>
+
+        <div class="col-lg-12">
+            <canvas baseChart
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+            ></canvas>
+        </div>
+
 
     </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+
+<div clas="row">
+
+    <div class="col-lg-12">
+        <form (ngSubmit)="downloadPDF2()" *ngIf="isAuthenticated()">
+            <button pButton type="submit" icon="pi pi-save" label="Download chart to pdf"
+                    iconPos="right"></button>
+        </form>
+
+
+    </div>
+</div>
 
 
