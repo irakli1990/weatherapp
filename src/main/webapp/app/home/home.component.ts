@@ -4,7 +4,6 @@ import { JhiEventManager } from 'ng-jhipster';
 import { LoginModalService, AccountService, Account } from 'app/core';
 import { JhiAlertService } from 'ng-jhipster';
 import { HomeService } from 'app/home/weather-main.service';
-import { HomeForecastService } from 'app/home/weather-forecast.service';
 import { Chart } from 'chart.js';
 import { saveAs } from 'file-saver/dist/FileSaver';
 import * as jsPDF from 'jspdf';
@@ -149,7 +148,14 @@ export class HomeComponent implements OnInit {
     public barChartLegend = true;
     public barChartPlugins = [pluginDataLabels];
 
-    public barChartData: ChartDataSets[] = [{ data: [], label: 'Temp' }, { data: [], label: 'Temp Min' }, { data: [], label: 'Temp Max' }];
+    public barChartData: ChartDataSets[] = [
+        { data: [], label: 'Temp' },
+        { data: [], label: 'Temp Min' },
+        {
+            data: [],
+            label: 'Temp Max'
+        }
+    ];
 
     constructor(
         private accountService: AccountService,
@@ -234,10 +240,10 @@ export class HomeComponent implements OnInit {
 
     downloadPDF2() {
         html2canvas(document.getElementById('dataforpdf')).then(function(canvas) {
-            var img = canvas.toDataURL('image/png');
-            var doc = new jsPDF('p', 'pt', 'a4');
-            var width = doc.internal.pageSize.getWidth();
-            var height = doc.internal.pageSize.getHeight();
+            const img = canvas.toDataURL('image/png');
+            const doc = new jsPDF('p', 'pt', 'a4');
+            const width = doc.internal.pageSize.getWidth();
+            const height = doc.internal.pageSize.getHeight();
             doc.addImage(img, 'JPEG', 0, 0, width, height);
             doc.save('testCanvas.pdf');
         });
