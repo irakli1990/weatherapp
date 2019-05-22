@@ -1,0 +1,30 @@
+<h1><span>News List</span></h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-striped" >
+                <thead>
+                <tr>
+                    <th><span>title</span></th>
+                    <th><span>Body</span></th>
+                    <th><span>image</span></th>
+                    <th><span>author</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let one of news ;trackBy: trackId">
+                    <td>{{one.title}}</td>
+                    <td>{{one.body}}</td>
+                    <td>{{one.image}}</td>
+                    <td>{{one.author}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="delete(one.id)">
+                            <span>Delete</span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
 export class IWind {
-    deg: number;
-    speed: number;
+    deg?: number;
+    speed?: number;
 }

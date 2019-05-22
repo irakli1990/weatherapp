@@ -1,0 +1,60 @@
+body {
+    font-size: 87.5%;
+}
+
+a {
+    color: #183883;
+}
+
+#logoUS {
+    margin: 15px 0;
+    text-align: right;
+}
+
+body.not-front #main-menu {
+    background: #183883;
+    height: auto;
+}
+
+#bottom .column div:first-child , #bottom .columns div:first-child {
+    border-bottom: none;
+}
+
+#top-right .region .block:first-child {
+    /*background: url(../images/bg1.png) no-repeat top left;*/
+    color: #ffffff;
+    height: 115px;
+    padding: 1em 0.5em 1em 12.5em;
+    overflow: hidden;
+    text-transform: uppercase;
+}
+
+#top-right .region .block:nth-child(2) {
+    /*background: url(../images/bg2.png) no-repeat top left;*/
+    color: #ffffff;
+    height: 185px;
+    margin-top: 1.5em;
+    padding: 1em;
+    overflow: hidden;
+    text-transform: uppercase;
+}
+
+#top-right .region .block:first-child h2,
+#top-right .region .block:nth-child(2) h2 {
+    color: #ffffff;
+    margin-bottom: 1em;
+}
+
+.block-views h2 {
+    margin-bottom: 1em;
+}
+
+.views-field-created {
+    color: #aaaaaa;
+}
+
+.more-link {
+    font-size: 0.8571em;
+    font-weight: bold;
+    text-transform: uppercase;
+}

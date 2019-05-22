@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <form class="example-form" #form="ngForm" (ngSubmit)="createNews(form.value)" novalidate>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input ngModel name="title" matInput placeholder="Title">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Body</mat-label>
+                    <textarea ngModel name="body" matInput placeholder="body"></textarea>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Img Url</mat-label>
+                    <input ngModel name="image" matInput placeholder="Image url">
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Author</mat-label>
+                    <input ngModel name="author" matInput placeholder="Author">
+                </mat-form-field>
+                <button mat-raised-button [disabled]="!form.valid" color="primary">ADD</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+

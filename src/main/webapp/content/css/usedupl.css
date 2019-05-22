@@ -1,0 +1,98 @@
+/*
+Skin Name: Nivo Slider Default Theme
+Skin URI: http://nivo.dev7studios.com
+Description: The default skin for the Nivo Slider.
+Version: 1.3
+Author: Gilbert Pellegrom
+Author URI: http://dev7studios.com
+Supports Thumbs: true
+*/
+
+.theme-usedupl .nivoSlider {
+    position:relative;
+    /*background:#fff url(loading.gif) no-repeat 50% 50%;*/
+}
+.theme-usedupl .nivoSlider img {
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:none;
+    max-height: 350px;
+}
+.theme-usedupl .nivoSlider a {
+    border:0;
+    display:block;
+}
+
+.theme-usedupl .nivo-controlNav {
+    right: 5px;
+    padding: 0;
+    position: absolute;
+    bottom: 5px;
+    z-index: 10;
+}
+
+.theme-usedupl .nivo-directionNav a {
+    display:block;
+    width:46px;
+    height:70px;
+    /*background:url(arrows.png) no-repeat;*/
+    text-indent:-9999px;
+    border:0;
+    opacity: 0.5;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+}
+.theme-usedupl:hover .nivo-directionNav a { opacity: 1; }
+.theme-usedupl a.nivo-nextNav {
+    background-position:-46px 0;
+    right:15px;
+}
+.theme-usedupl a.nivo-prevNav {
+    left:15px;
+}
+
+.theme-usedupl .nivo-caption {
+    background-color: rgb(24,56,131);
+    background-color: rgba(24,56,131,0.88);
+    font-weight: bold;
+}
+.theme-usedupl .nivo-caption a {
+    color:#fff;
+    border-bottom:1px dotted #fff;
+}
+.theme-usedupl .nivo-caption a:hover {
+    color:#fff;
+}
+
+.theme-usedupl .nivo-controlNav a {
+    background-color: #23aa9c;
+    border: 1px solid #d0d0d0;
+    border-radius: 20px;
+    display:inline-block;
+    height:20px;
+    margin-right: 5px;
+    padding: 0;
+    overflow: hidden;
+    text-indent:9999px;
+    width:20px;
+}
+.theme-usedupl .nivo-controlNav a.active {
+    background-color: #ffffff;
+}
+.theme-usedupl .nivo-controlNav.nivo-thumbs-enabled {
+    width: 100%;
+}
+.theme-usedupl .nivo-controlNav.nivo-thumbs-enabled a {
+    width: auto;
+    height: auto;
+    background: none;
+    margin-bottom: 5px;
+}
+.theme-usedupl .nivo-controlNav.nivo-thumbs-enabled img {
+    display: block;
+    width: 120px;
+    height: auto;
+}

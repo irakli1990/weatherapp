@@ -24,3 +24,6 @@ Main page styles
     height: 150px;
     background-color: #6200ee;
 }
+.mat-input-wrapper{
+    width:400px !important;
+}

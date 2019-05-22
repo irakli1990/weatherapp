@@ -3,13 +3,12 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "wetherapp": {
+        "ismsystems": {
             "root": "",
             "sourceRoot": "src/main/webapp",
             "projectType": "application",
             "architect": {}
-        },
-        "scripts": ["./node_modules/chart.js"]
+        }
     },
     "defaultProject": "wetherapp",
     "cli": {

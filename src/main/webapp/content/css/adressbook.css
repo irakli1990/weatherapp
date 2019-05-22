@@ -1,0 +1,55 @@
+.us-addressbook-employee-data {
+    float: left;
+    width: 50%;
+}
+
+.us-addressbook-employee-unit {
+    float: right;
+    width: 50%;
+}
+
+.us-addressbook-employee-name, .us-addressbook-unit-name {
+    font-size: 1.6em;
+    line-height: 2em;
+    margin: 0 0.5em;
+}
+
+.us-addressbook-field-name {
+    font-size: 1.4em;
+}
+
+.us-addressbook-field {
+    margin: 0 0.5em;
+    line-height: 1.8em;
+}
+
+.us-addressbook-field-title {
+    float: left;
+    width: 100px;
+}
+
+.us-addressbook-field-data {
+    font-size: 1.4em;
+    padding-left: 100px;
+}
+
+.us-addressbook-profile {
+    clear: both;
+    padding-top: 0.5em;
+}
+
+.us-addressbook-profile .us-addressbook-field-title {
+    width: 20%;
+}
+
+.us-addressbook-profile .us-addressbook-field-data {
+    float: left;
+    padding-left: 0;
+    width: 20%;
+}
+
+.us-addressbook-keys {
+    font-size: 1.2em;
+    margin: 0.5em;
+    text-align: center;
+}

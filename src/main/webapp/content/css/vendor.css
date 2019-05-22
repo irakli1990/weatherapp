@@ -3,4 +3,26 @@
 @import '~primeicons/primeicons.css';
 @import '~primeng/resources/primeng.min.css';
 @import '~primeng/resources/themes/nova-colored/theme.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~chart.js/dist/Chart.css';
+@import 'rest.css';
+@import 'layout.css';
+@import 'style.css';
+@import 'ism.css';
+@import 'adressbook.css';
+@import 'novoslider.css';
+@import 'ckeditor.css';
+@import 'views.css';
+@import 'system.css';
+@import 'usedupl.css';
+@import 'adaptime-img.css';
+
+
+
+.white {
+    color: white;
+}
+.red {
+    color: red;
+}
+

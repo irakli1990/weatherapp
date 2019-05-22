@@ -1,0 +1,201 @@
+.column,.columns {
+    float: left;
+    padding-left: 0.34375em;
+    padding-right: 0.34375em;
+    position: relative;
+    width: 100%;
+}
+
+[class*="column"] + [class*="column"]:last-child {
+    float: right;
+}
+
+[class*="column"] + [class*="column"]:end {
+    float: left;
+}
+
+.one {
+    position: relative;
+    width: 8.33333%;
+}
+
+.two {
+    position: relative;
+    width: 16.66667%;
+}
+
+.onefifth {
+    position: relative;
+    width: 20%;
+}
+
+.three {
+    position: relative;
+    width: 25%;
+}
+
+.four {
+    position: relative;
+    width: 33.33333%;
+}
+
+.five {
+    position: relative;
+    width: 41.66667%;
+}
+
+.six {
+    position: relative;
+    width: 50%;
+}
+
+.seven {
+    position: relative;
+    width: 58.33333%;
+}
+
+.eight {
+    position: relative;
+    width: 66.66666%;
+}
+
+.nine {
+    position: relative;
+    width: 75%;
+}
+
+.ten {
+    position: relative;
+    width: 83.33333%;
+}
+
+.eleven {
+    position: relative;
+    width: 91.66667%;
+}
+
+.twelve {
+    position: relative;
+    width: 100%;
+}
+
+.row {
+    min-height: 1em;
+    margin: 0 auto;
+    position: relative;
+    /*  overflow: hidden; */
+    width: 100%;
+    *zoom: 1;
+}
+
+.row:before,.row:after {
+    content: " ";
+    display: table;
+}
+
+.row:after {
+    clear: both;
+}
+
+.row.collapse>.column,.row.collapse>.columns  {
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+    float: left;
+}
+
+.row.collapse .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.row .row {
+    margin-left: -0.34375em;
+    margin-right: -0.34375em;
+    width: auto;
+    *zoom: 1;
+}
+
+#top {
+    height: 50px;
+}
+
+#main {
+    margin: 0 auto;
+    padding-top: 1.5em;
+}
+
+#main > .row {
+    margin-top: 1.5em;
+}
+
+#header.row {
+    margin-top: 0;
+}
+
+#navigation {
+    height: 350px;
+}
+
+.area {
+    float: left;
+    margin-bottom: 0.6191%;
+    margin-left: 0.6191%;
+    width: 32.7142%;
+}
+
+.area .last,
+.area:nth-child(3n+0) {
+    margin-right: 0;
+}
+
+#bottom .twelve.columns.bar {
+    border-right: none;
+}
+
+#bottom .column, #bottom .columns {
+    border-right: 1px dashed #ffffff;
+}
+
+#bottom .column > div, #bottom .columns > div {
+    line-height: 1.2857em;
+    margin-left: 4%;
+    margin-right: 20%;
+    min-height: 6em;
+    padding: 20px 0 25px;
+}
+
+#bottom .column:first-child > div, #bottom .columns:first-child > div {
+    margin-left: 0;
+}
+
+#bottom .column > div:first-child, #bottom .columns > div:first-child {
+    border-bottom: 1px dashed #ffffff;
+    padding-top: 0;
+}
+
+#bottom .column:nth-child(3), #bottom .columns:nth-child(3) {
+    border-right: none;
+}
+
+body.not-front #navigation {
+    height: auto;
+}
+
+body.not-front #navigation > div > div {
+    margin-top: 1.5em;
+}
+
+body.not-front #navigation > div > div:first-child {
+    margin-top: 0;
+}
+
+@media only screen and (min-width: 1280px) {
+    #main, #top .row, #bottom .row {
+        padding: 0 2.5em;
+        width: 1080px;
+    }
+    #main, #bottom {
+        padding: 1.5em 2.5em;
+    }
+}

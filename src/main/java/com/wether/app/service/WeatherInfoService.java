@@ -17,11 +17,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 
+/**
+ * @author Irakli Kardava
+ */
 @Component
 public class WeatherInfoService {
 
 
-    // GSON
+
     @Autowired
     public static Gson create() {
         return new GsonBuilder().setPrettyPrinting().create();
@@ -32,11 +35,14 @@ public class WeatherInfoService {
     private static final String STATIC_WEATHER_URL =
         "http://api.openweathermap.org/data/2.5/weather?q=%s&appid=e7b429593963ceb11a198af8d22c9a55&units=metric";
 
-    private static final String STATIC_WEATHER_FORECAST_URL ="https://samples.openweathermap.org/data/2.5/forecast?q=M%C3%BCnchen,DE&appid=b6907d289e10d714a6e88b30761fae22";
-//        "http://api.openweathermap.org/data/2.5/forecast?q=%s&appid=e7b429593963ceb11a198af8d22c9a55&units=metric";
+    private static final String STATIC_WEATHER_FORECAST_URL =
+        "http://api.openweathermap.org/data/2.5/forecast?q=%s&appid=e7b429593963ceb11a198af8d22c9a55&units=metric";
 
 
-    // METHOD FINDING ALL INFORMATION FROM OPENWEATHERMAP
+    /**
+     * @param city
+     * @return weatherInfo json
+     */
     public WeatherInfo getWeather(String city) {
         Reader reader =
             parsUrltoJsonObject(String.format(STATIC_WEATHER_URL, city));
@@ -46,7 +52,10 @@ public class WeatherInfoService {
     }
 
 
-    // METHOD FOR WEATHER FORECAST
+    /**
+     * @param city
+     * @return listWeatherInfo weather list
+     */
     public List getWeatherForecast(String city) {
         Reader reader =
             parsUrltoJsonObject(String.format(STATIC_WEATHER_FORECAST_URL, city));
@@ -55,14 +64,20 @@ public class WeatherInfoService {
         return listWeatherInfo.getList();
     }
 
-     //METHOD FINDING MAIN FROM OPENWEATHER MAP
+    /**
+     * @param city
+     * @return main body of weather json
+     */
     public Main getMain(String city) {
         Main main = getWeather(city).getMain();
         return main;
     }
 
 
-    // METHOD READING READING STREAM FROM URL
+    /**
+     * @param url
+     * @return reader for url
+     */
     public Reader parsUrltoJsonObject(String url) {
         InputStream inputStream;
         Reader reader = null;

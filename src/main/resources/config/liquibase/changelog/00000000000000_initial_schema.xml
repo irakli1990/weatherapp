@@ -168,4 +168,30 @@
             <column name="local_date" type="date"/>
         </createTable>
     </changeSet>
+
+    <changeSet id="00000000000003" author="irakli kardava">
+        <createTable tableName="history">
+            <column autoIncrement="${autoIncrement}" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="history_pk"/>
+            </column>
+            <column name="city" type="varchar(45)"/>
+            <column name="humidity" type="varchar(45)"/>
+            <column name="pressure" type="varchar(45)"/>
+            <column name="temp" type="varchar(45)"/>
+            <column name="temp_max" type="varchar(45)"/>
+            <column name="search_time" type="timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="00000000000004" author="irakli kardava">
+        <createTable tableName="news">
+            <column autoIncrement="${autoIncrement}" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="news_pk"/>
+            </column>
+            <column name="title" type="varchar(45)"/>
+            <column name="body" type="varchar(255)"/>
+            <column name="image" type="varchar(45)"/>
+            <column name="author" type="varchar(45)"/>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

@@ -1,0 +1,68 @@
+<h1><span>History</span></h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-striped" id="dataforpdf1">
+                <thead>
+                <tr>
+                    <th><span>City</span></th>
+                    <th><span>Humidity</span></th>
+                    <th><span>Pressure</span></th>
+                    <th><span>Temperature</span></th>
+                    <th><span>Temperature Max</span></th>
+                    <th><span>Date</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let one of history ;trackBy: trackId">
+                    <td>{{one.city}}</td>
+                    <td>{{one.humidity}}</td>
+                    <td>{{one.pressure}}</td>
+                    <td>{{one.temp}}</td>
+                    <td>{{one.tempMax}}</td>
+                    <td>{{one.searchTime|date:'long'}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="delete(one.id)">
+                            <span>Delete</span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="hasdata">
+    <div class="row">
+        <div class="col-lg-12">
+            <button mat-reised-button color="primary" (click)="downloadPDF1()">
+                Download PDF
+                <mat-icon aria-label="Example icon-button with a heart icon">picture_as_pdf</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container" id="dataforpdf">
+    <div class="row">
+        <div class="col-lg-12">
+            <canvas baseChart #chart [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType"
+            ></canvas>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="hasdata&&isAuthenticated()" >
+    <div class="row">
+        <div class="col-lg-12">
+            <button   mat-reised-button color="primary" (click)="downloadPDF2()">
+                Download PDF
+                <mat-icon aria-label="Example icon-button with a heart icon">picture_as_pdf</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+

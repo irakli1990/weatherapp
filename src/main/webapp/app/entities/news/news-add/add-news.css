@@ -1,0 +1,14 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+em {float:right;color:#E05C65; padding-left:10px;}
+.error input {background-color:#E3C3C5;}
+.error ::-webkit-input-placeholder {color: #999;}
+.error :-moz-placeholder {color:#999;}
+.error :ms-input-placeholder {color:#999;}

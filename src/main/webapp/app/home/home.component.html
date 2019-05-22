@@ -1,99 +1,74 @@
-<div class="container">
+<div id="main" class="mainConteiner">
+    <div class="container" id="mainConteiner">
 
-    <br>
-    <br>
-    <div class="row">
-        <div class="col-lg-12">
-            <form (ngSubmit)="findCityWeather(weatherForCity)">
-                <input type="text" [(ngModel)]="weatherForCity" name="weatherForCity" pInputText
-                       placeholder="search for city"/>
-                <button pButton type="submit" icon="pi pi-search" label="Search" iconPos="right"></button>
-            </form>
+
+        <div id="header" class="row">
+            <div class="four columns">
+                <h1 id="logo"><a href="/" title="Strona główna" rel="home"><img
+                    src="../../content/images/rsz_sunlogo.png"/></a></h1>
+            </div>
         </div>
+        <div id="navigation" class="row">
+            <div class="four columns">
+                <div id="main-menu" class="navy bg-primary">
+                    <div class="region region-main-menu">
+                        <div id="block-menu-block-1" class="block block-menu-block">
 
-        <br>
-        <br>
-        <div class="row" id="dataforpdf">
+                            <h2>menu główne - start</h2>
 
-            <div class="col-lg-12">
+                            <div class="content">
+                                <div
+                                    class="menu-block-wrapper menu-block-1 menu-name-menu-ism-main parent-mlid-0 menu-level-1">
+                                    <ul class="menu">
+                                        <li class="first leaf has-children menu-mlid-16552"><a
+                                            routerLink="/forecast">Forecast</a></li>
+                                        <li *ngIf="isAuthenticated()"
+                                            class="leaf has-children menu-mlid-16611" routerLink="/history">
+                                            <a>History</a>
+                                        </li>
+                                        <li class="first leaf has-children menu-mlid-16552" routerLink="/statistic"><a>Statistics</a>
+                                        </li>
 
+                                    </ul>
+                                    <button mat-flat-button color="primary" (click)="changeColor()">Change color</button>
 
-                <div class="conteiner" id="content" #content>
-                    <div class="container-table">
-                        <div class="wrap-table">
-                            <div class="table">
-                                <table width="100%">
-                                    <thead>
-                                    <tr class="table100-head">
-                                        <th class="column1">Miasto</th>
-                                        <th class="column2">Temperatura</th>
-                                        <th class="column3">Temp. Maksimalna</th>
-                                        <th class="column4">Temp. Minimalna</th>
-                                        <th class="column5">Wylgotność</th>
-                                        <th class="column6">Cisnienie</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="column5">{{weatherForCity}}</td>
-                                        <td class="column1">{{randomtemp}}</td>
-                                        <td class="column2">{{randomtempMax}}</td>
-                                        <td class="column3">{{randomtempMin}}</td>
-                                        <td class="column4">{{humidity}}</td>
-                                        <td class="column5">{{presure}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <canvas baseChart
-                        [datasets]="barChartData"
-                        [labels]="barChartLabels"
-                        [options]="barChartOptions"
-                        [plugins]="barChartPlugins"
-                        [legend]="barChartLegend"
-                        [chartType]="barChartType">
-                </canvas>
+            <div class="eight columns">
+                <div id="slider">
+                    <div class="region region-slider">
+                        <div id="block-media-nivo-slider-6821" class="block block-media-nivo-slider">
 
+
+                            <div class="content">
+                                <div class="col-lg-12">
+                                    <mat-form-field style="width:500px !important" appearance="outline">
+                                        <mat-label>Search city weather</mat-label>
+                                        <input matInput [(ngModel)]="weatherForCity" placeholder="Search city weather">
+                                    </mat-form-field>
+                                    <button mat-raised-button color="primary" (click)="findCityWeather(weatherForCity)">
+                                        Search
+                                    </button>
+                                    <canvas baseChart
+                                            [datasets]="barChartData"
+                                            [labels]="barChartLabels"
+                                            [options]="barChartOptions"
+                                            [plugins]="barChartPlugins"
+                                            [legend]="barChartLegend"
+                                            [chartType]="barChartType">
+                                    </canvas>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <br>
-        <br>
-
-        <div class="col-lg-12">
-            <canvas baseChart
-                    [datasets]="lineChartData"
-                    [labels]="lineChartLabels"
-                    [options]="lineChartOptions"
-                    [colors]="lineChartColors"
-                    [legend]="lineChartLegend"
-                    [chartType]="lineChartType"
-            ></canvas>
-        </div>
-
-
     </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-
-
-<div clas="row">
-
-    <div class="col-lg-12">
-        <form (ngSubmit)="downloadPDF2()" *ngIf="isAuthenticated()">
-            <button pButton type="submit" icon="pi pi-save" label="Download chart to pdf"
-                    iconPos="right"></button>
-        </form>
-
-
-    </div>
-</div>
-
 
